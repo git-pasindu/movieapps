@@ -6,15 +6,24 @@ import MovieCard from "./MovieCard";
 const API_URL = import.meta.env.VITE_MOVIE_API_URL;
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
   const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
+    try {
+      const response = await fetch(`${API_URL}&s=${title}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+      }
 
-    console.log(data);
+      const data = await response.json();
+      setMovies(data.Search);
+    } catch (error) {
+      console.error("An error occurred:", error.message);
+      // Handle the error state or display an error message to the user
+    }
   };
-
   useEffect(() => {
-    searchMovies("superman");
+    searchMovies("batman");
   });
 
   return (
@@ -27,9 +36,17 @@ function App() {
         <img src={SearchIcon} alt="search" onClick="" />
       </div>
 
-      <div className="container">
-        <MovieCard />
-      </div>
+      {movies?.length > 0 ? (
+        <div className="container">
+          {movies.map((movie) => (
+            <MovieCard movie={movie} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty">
+          <h2>No movies found</h2>
+        </div>
+      )}
     </>
   );
 }
