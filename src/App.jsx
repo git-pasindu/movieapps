@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SearchIcon from "./search.svg";
 import "./App.css";
 import MovieCard from "./MovieCard";
+import { titles } from "./constants";
 
 const API_URL = import.meta.env.VITE_MOVIE_API_URL;
 
@@ -31,7 +32,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1>Codimite movies</h1>
+        <h1>{titles.pageTitle}</h1>
 
         <div className="search">
           <input
@@ -53,7 +54,7 @@ function App() {
           </div>
         ) : (
           <div className="empty">
-            <h2>No movies found</h2>
+            <h2>{titles.nofound}</h2>
           </div>
         )}
       </div>
