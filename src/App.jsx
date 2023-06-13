@@ -25,7 +25,6 @@ function App() {
       setMovies(data.Search);
     } catch (error) {
       console.error("An error occurred:", error.message);
-      // Handle the error state or display an error message to the user
     }
   };
 

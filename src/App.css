@@ -14,7 +14,13 @@
 
 body {
   font-family: var(--font-roboto);
-  background-color: black;
+  background: rgb(5, 3, 27);
+  background: linear-gradient(
+    90deg,
+    rgba(5, 3, 27, 1) 4%,
+    rgba(0, 0, 0, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 
 .app {
