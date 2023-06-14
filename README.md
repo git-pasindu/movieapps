@@ -29,7 +29,6 @@ The Movie Search App utilizes the [Public Movie Database API](https://www.omdbap
 ## Features
 - Search for movies by title.
 - Display movie details such as title, release year, plot, and poster image.
-- Click on a movie card to view more details.
 - Responsive design for optimal viewing on various devices.
 
 
