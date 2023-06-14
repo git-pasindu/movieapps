@@ -197,6 +197,35 @@ h1 {
 .empty h2 {
   text-align: center;
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.5rem;
+  color: #f9d3b4;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(249, 211, 180, 0.2);
+  border-top-color: #f9d3b4;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin-left: 0.5rem;
+}
 
 @media screen and (max-width: 600px) {
   .app {

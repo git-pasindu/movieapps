@@ -9,6 +9,7 @@ const API_URL = import.meta.env.VITE_MOVIE_API_URL;
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     searchMovies("batman");
@@ -16,6 +17,7 @@ function App() {
 
   const searchMovies = async (title) => {
     try {
+      setIsLoading(true);
       const response = await fetch(`${API_URL}&s=${title}`);
       if (!response.ok) {
         throw new Error("Failed to fetch movies");
@@ -25,13 +27,18 @@ function App() {
       setMovies(data.Search);
     } catch (error) {
       console.error("An error occurred:", error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  const handleTitleClick = () => {
+    window.location.reload();
+  };
   return (
     <>
       <div className="app">
-        <h1>{titles.pageTitle}</h1>
+        <h1 onClick={handleTitleClick}>{titles.pageTitle}</h1>
 
         <div className="search">
           <input
@@ -45,7 +52,9 @@ function App() {
             onClick={() => searchMovies(searchTerm)}
           />
         </div>
-        {movies?.length > 0 ? (
+        {isLoading ? (
+          <div className="loading">Loading...</div>
+        ) : movies?.length > 0 ? (
           <div className="container">
             {movies.map((movie) => (
               <MovieCard movie={movie} />
