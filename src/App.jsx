@@ -24,7 +24,7 @@ function App() {
       }
 
       const data = await response.json();
-      setMovies(data.Search);
+      setMovies(data.Search); //fectching data
     } catch (error) {
       console.error("An error occurred:", error.message);
     } finally {
