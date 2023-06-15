@@ -195,7 +195,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
+  flex-direction: column;
+  text-align: center;
 }
 
 .empty h2 {
