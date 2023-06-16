@@ -1,4 +1,4 @@
-Coimaitie Movies
+Codimite Movies
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
